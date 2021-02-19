@@ -4,5 +4,7 @@ module.exports = {
   ],
   outputDir: 'docs',
   assetsDir: './',
-  publicPath: './'
+  publicPath: '/study-vuetify_lesson',
+  filenameHashing: false,
+  productionSourceMap: false
 }
