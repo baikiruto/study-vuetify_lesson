@@ -110,14 +110,8 @@ export default {
           name: "Getting Started",
           icon: "mdi-speedometer",
           lists: [
-            {
-              name: "Quick Start",
-              link: "/quick-start",
-            },
-            {
-              name: "Pre-made layouts",
-              link: "/pre-made-layouts",
-            },
+            { name: "Quick Start", link: "/quick-start" },
+            { name: "Pre-made layouts", link: "/pre-made-layouts" },
           ],
         },
         {
@@ -127,12 +121,19 @@ export default {
         {
           name: "Styles & animations",
           icon: "mdi-palette",
-          lists: ["Colors", "Content", "Display"],
+          lists: [
+            { name: "Colors", link: "/colors" },
+            { name: "Content", link: "/content" },
+            { name: "Display", link: "/display" },
+          ],
         },
         {
           name: "UI Components",
           icon: "mdi-view-dashboard",
-          lists: ["API explorer", "Alerts"],
+          lists: [
+            { name: "API explorer", link: "/api-explorer" },
+            { name: "Alerts", link: "/alerts" },
+          ],
         },
         {
           name: "Directives",
