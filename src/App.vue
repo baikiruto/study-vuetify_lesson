@@ -74,76 +74,42 @@
 </template>
 
 <script>
+import firebase from "@/plugins/firebase";
+const supportsList = [];
+const nav_lists = [];
+
+var db = firebase.firestore();
+
+db.collection("supports")
+  .get()
+  .then((query) => {
+    query.forEach((doc) => {
+      var data = doc.data();
+      supportsList.push(data);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+db.collection("nav_lists")
+  .get()
+  .then((query) => {
+    query.forEach((doc) => {
+      var data = doc.data();
+      nav_lists.push(data);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 export default {
   data() {
     return {
       drawer: null,
-      supports: [
-        {
-          name: "Consulting and suppourt",
-          icon: "mdi-vuetify",
-          link: "/consulting-and-support",
-        },
-        {
-          name: "Discord community",
-          icon: "mdi-discord",
-          link: "/discord-community",
-        },
-        {
-          name: "Report a bug",
-          icon: "mdi-bug",
-          link: "/report-a-bug",
-        },
-        {
-          name: "Github issue board",
-          icon: "mdi-github-face",
-          link: "/guthub-issue-board",
-        },
-        {
-          name: "Stack overview",
-          icon: "mdi-stack-overflow",
-          link: "/stack-overview",
-        },
-      ],
-      nav_lists: [
-        {
-          name: "Getting Started",
-          icon: "mdi-speedometer",
-          lists: [
-            { name: "Quick Start", link: "/quick-start" },
-            { name: "Pre-made layouts", link: "/pre-made-layouts" },
-          ],
-        },
-        {
-          name: "Customization",
-          icon: "mdi-cogs",
-        },
-        {
-          name: "Styles & animations",
-          icon: "mdi-palette",
-          lists: [
-            { name: "Colors", link: "/colors" },
-            { name: "Content", link: "/content" },
-            { name: "Display", link: "/display" },
-          ],
-        },
-        {
-          name: "UI Components",
-          icon: "mdi-view-dashboard",
-          lists: [
-            { name: "API explorer", link: "/api-explorer" },
-            { name: "Alerts", link: "/alerts" },
-          ],
-        },
-        {
-          name: "Directives",
-          icon: "mdi-function",
-        },
-        {
-          name: "Preminum themes",
-          icon: "mdi-vuetify",
-        },
-      ],
+      supports: supportsList,
+      nav_lists: nav_lists,
     };
   },
 };
